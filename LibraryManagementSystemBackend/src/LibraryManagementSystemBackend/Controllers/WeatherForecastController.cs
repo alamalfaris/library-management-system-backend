@@ -50,5 +50,11 @@ namespace LibraryManagementSystemBackend.Controllers
             var response = ApiResponse<string>.FailureResponse(StatusCodes.Status400BadRequest, "Bad Request", null, details);
             return Ok(response);
         }
+
+        [HttpGet("test/global-exception")]
+        public IActionResult TestGlobalException()
+        {
+            throw new InvalidOperationException("This operation is invalid");
+        }
     }
 }

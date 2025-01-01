@@ -1,3 +1,5 @@
+using LibraryManagementSystemBackend.Helpers;
+
 namespace LibraryManagementSystemBackend
 {
     public static class Program
@@ -8,7 +10,7 @@ namespace LibraryManagementSystemBackend
 
             #region Add services to the container.
 
-            builder.Services.AddControllers();
+            DependencyInjectionHelper.ConfigureServices(builder);
 
             var app = builder.Build();
 
@@ -17,9 +19,8 @@ namespace LibraryManagementSystemBackend
             #region Configure the HTTP request pipeline.
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
+            app.UseExceptionHandler();
 
             app.MapControllers();
 

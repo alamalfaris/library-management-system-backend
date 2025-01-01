@@ -14,6 +14,8 @@ values
 	,('Microfiche', 'system', getdate(), null, null)
 	,('Disk', 'system', getdate(), null, null)
 
+select * from CollectionTypes
+
 CREATE TABLE FormatTypes (
 	Id int primary key identity(1,1),
 	TypeName varchar(100),
