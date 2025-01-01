@@ -1,3 +1,4 @@
+using LibraryManagementSystemBackend.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementSystemBackend.Controllers
@@ -28,6 +29,26 @@ namespace LibraryManagementSystemBackend.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("success/response")]
+        public IActionResult CreateSuccessResponse()
+        {
+            var response = ApiResponse<string>.SuccessResponse("hello world");
+            return Ok(response);
+        }
+
+        [HttpGet("failure/response")]
+        public IActionResult CreateFailureResponse()
+        {
+            List<string> details = new List<string>()
+            {
+                "Name must be filled!",
+                "Address must be filled!"
+            };
+
+            var response = ApiResponse<string>.FailureResponse(StatusCodes.Status400BadRequest, "Bad Request", null, details);
+            return Ok(response);
         }
     }
 }
